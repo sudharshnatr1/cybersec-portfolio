@@ -177,7 +177,7 @@ os_skills = [
 for skill_name, proficiency in os_skills:
     Skill.objects.create(category='os', name=skill_name, proficiency=proficiency, icon='desktop')
 
-print("✅ Profile data populated successfully!")
+print("Profile data populated successfully!")
 print(f"Created: {Profile.objects.count()} Profile")
 print(f"Created: {Education.objects.count()} Education entries")
 print(f"Created: {Certification.objects.count()} Certifications")

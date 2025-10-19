@@ -4,14 +4,14 @@ A modern, responsive cybersecurity portfolio built with Django. Showcase your sk
 
 ## Features
 
-- 🎨 Modern, responsive design
-- 📱 Mobile-friendly interface
-- 🔐 Django admin panel for easy content management
-- 📊 Skills visualization with proficiency levels
-- 💼 Project showcase with detailed descriptions
-- 📜 Certifications and achievements display
-- 📧 Contact form integration
-- 🚀 Easy deployment to cloud platforms
+- Modern, responsive design
+- Mobile-friendly interface
+- Django admin panel for easy content management
+- Skills visualization with proficiency levels
+- Project showcase with detailed descriptions
+- Certifications and achievements display
+- Contact form integration
+- Easy deployment to cloud platforms
 
 ## Tech Stack
 
@@ -161,7 +161,7 @@ cybersec-portfolio/
 
 ## Security Notes
 
-⚠️ **Important for Production:**
+**Important for Production:**
 
 1. Change `SECRET_KEY` in settings.py
 2. Set `DEBUG = False`
@@ -229,4 +229,4 @@ For issues and questions:
 
 ---
 
-**Built with ❤️ for cybersecurity professionals**
+Built for cybersecurity professionals
