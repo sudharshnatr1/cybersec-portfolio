@@ -1,0 +1,100 @@
+{% load static %}
+{% load portfolio_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | {{ profile.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-bg">
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'projects' %}" class="nav-link">Projects</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="text-align: center; padding: 100px 0 20px 0;">
+        <h1 class="glitch-title" style="font-size: 3rem;">{{ profile.name }}</h1>
+    </div>
+
+    <section style="min-height: 100vh; padding-top: 40px; padding-bottom: 80px;">
+        <div class="container">
+            <h2 class="section-title">
+                Get In Touch
+            </h2>
+
+            {% if messages %}
+                {% for message in messages %}
+                <div style="background: rgba(63, 255, 0, 0.1); border: 2px solid var(--cyber-green); padding: 20px; margin-bottom: 30px; text-align: center; color: var(--cyber-green); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form method="post" style="background: var(--card-bg); border: 2px solid var(--cyber-pink); padding: 40px;">
+                    {% csrf_token %}
+                    
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--cyber-blue); margin-bottom: 10px;">Name</label>
+                        <input type="text" name="name" required 
+                               style="width: 100%; padding: 12px; background: rgba(0, 245, 255, 0.05); border: 2px solid var(--cyber-blue); color: var(--text-primary); font-family: 'Courier New', monospace;">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--cyber-blue); margin-bottom: 10px;">Email</label>
+                        <input type="email" name="email" required 
+                               style="width: 100%; padding: 12px; background: rgba(0, 245, 255, 0.05); border: 2px solid var(--cyber-blue); color: var(--text-primary); font-family: 'Courier New', monospace;">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--cyber-blue); margin-bottom: 10px;">Subject</label>
+                        <input type="text" name="subject" required 
+                               style="width: 100%; padding: 12px; background: rgba(0, 245, 255, 0.05); border: 2px solid var(--cyber-blue); color: var(--text-primary); font-family: 'Courier New', monospace;">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--cyber-blue); margin-bottom: 10px;">Message</label>
+                        <textarea name="message" rows="6" required 
+                                  style="width: 100%; padding: 12px; background: rgba(0, 245, 255, 0.05); border: 2px solid var(--cyber-blue); color: var(--text-primary); font-family: 'Courier New', monospace; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <h3 style="color: var(--cyber-pink); margin-bottom: 20px;">Or reach me at:</h3>
+                    <p style="color: var(--text-secondary); margin: 10px 0;">
+                        <i class="fas fa-envelope" style="color: var(--cyber-blue);"></i> 
+                        <a href="mailto:{{ profile.email }}" style="color: var(--cyber-blue); text-decoration: none;">{{ profile.email }}</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin: 10px 0;">
+                        <i class="fas fa-phone" style="color: var(--cyber-blue);"></i> 
+                        {{ profile.phone }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 {{ profile.name }}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% load static %}
+{% load portfolio_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | {{ profile.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-bg">
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'projects' %}" class="nav-link">Projects</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="text-align: center; padding: 100px 0 20px 0;">
+        <h1 class="glitch-title" style="font-size: 3rem;">{{ profile.name }}</h1>
+    </div>
+
+    <section class="projects" style="padding-top: 40px;">
+        <div class="container">
+            <h2 class="section-title">
+                All Projects
+            </h2>
+            
+            <div class="projects-grid">
+                {% for project in projects %}
+                <div class="project-card">
+                    {% if project.image %}
+                    <div class="project-image">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                    </div>
+                    {% endif %}
+                    <div class="project-content">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <div class="project-tech">
+                            {% for tech in project.technologies|split:"," %}
+                            <span class="tech-tag">{{ tech|trim }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-links">
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            {% endif %}
+                            {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 {{ profile.name }}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
