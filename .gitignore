@@ -1,38 +1,6 @@
-# Python
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-ENV/
-__pycache__/
-*.pyc
-
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-/staticfiles/
-/media/
-
-# Environment variables
-.env
-.venv
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Deployment
-*.pid
-*.seed
-*.pid.lock
+# Personal data files - DO NOT COMMIT
+populate_data_personal.py
+create_personal_superuser.py
+.env.local
+personal_data.py
+my_portfolio_data.py

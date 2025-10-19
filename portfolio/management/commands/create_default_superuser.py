@@ -1,14 +1,17 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
+import os
 
 class Command(BaseCommand):
     help = 'Creates a default admin superuser'
 
     def handle(self, *args, **options):
         User = get_user_model()
-        username = 'admin'
-        email = 'admin@example.com'
-        password = 'admin'
+        
+        # Use environment variables if available, otherwise use defaults
+        username = os.environ.get('ADMIN_USERNAME', 'admin')
+        email = os.environ.get('ADMIN_EMAIL', 'admin@example.com')
+        password = os.environ.get('ADMIN_PASSWORD', 'admin')
         
         if not User.objects.filter(username=username).exists():
             User.objects.create_superuser(
